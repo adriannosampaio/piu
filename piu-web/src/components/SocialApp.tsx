@@ -143,6 +143,86 @@ const people = [
   { name: "Zara Bell", handle: "@zarabell", image: photos.zara },
 ];
 
+
+function TextPost({
+  author,
+  handle,
+  avatar,
+  text,
+  likes,
+  time,
+  location,
+}: {
+  author: string;
+  handle: string;
+  avatar: string;
+  text: string;
+  likes: number;
+  time: string;
+  location?: string;
+}) {
+  const [liked, setLiked] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [showComment, setShowComment] = useState(false);
+
+  return (
+    <article className="post-card">
+      <header className="post-header">
+        <img className="avatar" src={avatar} alt="" />
+        <div className="min-w-0">
+          <div className="flex items-center gap-1.5">
+            <h3 className="font-bold text-[15px] text-ink">{author}</h3>
+            <span className="verified">
+              <Icon name="check" size={9} />
+            </span>
+          </div>
+          <p className="truncate text-xs text-muted">
+            {handle} · {time}
+            {location ? ` · ${location}` : ""}
+          </p>
+        </div>
+        <button className="icon-btn ml-auto" aria-label={labels.feed.moreOptions}>
+          <Icon name="more" />
+        </button>
+      </header>
+
+      <p className="px-5 pb-4 text-[15px] leading-6 text-ink">{text}</p>
+
+      <div className="post-actions">
+        <button
+          className={liked ? "action-btn liked" : "action-btn"}
+          onClick={() => setLiked(!liked)}
+        >
+          <Icon name="heart" filled={liked} />
+          <span>{(likes + (liked ? 1 : 0)).toLocaleString()}</span>
+        </button>
+        <button className="action-btn" onClick={() => setShowComment(!showComment)}>
+          <Icon name="comment" />
+          <span>48</span>
+        </button>
+        <button className="action-btn">
+          <Icon name="send" />
+          <span>{labels.feed.share}</span>
+        </button>
+        <button
+          className={saved ? "action-btn ml-auto text-ink" : "action-btn ml-auto"}
+          onClick={() => setSaved(!saved)}
+          aria-label={labels.feed.savePost}
+        >
+          <Icon name="bookmark" filled={saved} />
+        </button>
+      </div>
+      {showComment && (
+        <div className="comment-row">
+          <img className="h-8 w-8 rounded-full object-cover" src={photos.maya} alt="" />
+          <input autoFocus placeholder={formatLabel(labels.feed.replyTo, { name: author })} />
+          <button onClick={() => setShowComment(false)}>{labels.feed.post}</button>
+        </div>
+      )}
+    </article>
+  );
+}
+
 function Post({
   author,
   handle,
@@ -392,11 +472,11 @@ export default function SocialApp() {
             </article>
           ))}
 
-          <Post
+          <TextPost
             author="Luca Moreno"
             handle="@lucamoreno"
             avatar={photos.luca}
-            image={photos.hero}
+            // image={photos.hero}
             time="2h"
             location="Lisbon"
             likes={1284}
