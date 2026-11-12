@@ -1,0 +1,25 @@
+# Node / Next.js
+piu-web/node_modules/
+piu-web/.next/
+piu-web/out/
+piu-web/.vercel/
+
+# Python / FastAPI
+piu-api/__pycache__/
+piu-api/*.py[cod]
+piu-api/.venv/
+piu-api/venv/
+
+# Environment files
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Docker / local runtime
+*.log
+tmp/
+
+# OS/editor files
+.DS_Store
+Thumbs.db

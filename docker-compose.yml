@@ -1,0 +1,19 @@
+services:
+  piu-web:
+    build:
+      context: piu-web/
+      args:
+        NEXT_PUBLIC_API_URL: http://piu-api:8000
+    environment:
+      NEXT_PUBLIC_API_URL: http://piu-api:8000
+    container_name: piu-web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - piu-api
+  piu-api:
+    build:
+      context: piu-api/
+    container_name: piu-api
+    ports:
+      - "8000:8000"
