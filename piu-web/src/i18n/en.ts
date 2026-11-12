@@ -1,0 +1,58 @@
+export const en = {
+  nav: {
+    home: "Home",
+    explore: "Explore",
+    notifications: "Notifications",
+    messages: "Messages",
+    bookmarks: "Bookmarks",
+    profile: "Profile",
+    create: "Create",
+  },
+  feed: {
+    following: "Following",
+    explore: "Explore",
+    sharePlaceholder: "Share something that feels like you…",
+    post: "Post",
+    reply: "Reply",
+    replyTo: "Reply to {name}…",
+    share: "Share",
+    savePost: "Save post",
+    moreOptions: "More options",
+    sharedImageAlt: "Shared moment from the post",
+    now: "now",
+  },
+  stories: {
+    label: "Stories",
+    yourStory: "Your story",
+  },
+  search: {
+    label: "Search",
+    placeholder: "Search Luma",
+    suggestion: "Try “film photography” or a creator’s name",
+  },
+  sidebar: {
+    trendingNow: "Trending now",
+    trending: "Trending",
+    peopleToKnow: "People to know",
+    seeAll: "See all",
+    follow: "Follow",
+    following: "Following",
+  },
+  composer: {
+    addPhoto: "Add photo",
+    addFeeling: "Add feeling",
+    addLocation: "Add location",
+  },
+  accessibility: {
+    mainNavigation: "Main navigation",
+    mobileNavigation: "Mobile navigation",
+    messages: "Messages",
+  },
+  footer: {
+    about: "About",
+    help: "Help",
+    privacy: "Privacy",
+    terms: "Terms",
+    copyright: "© 2026 Luma Social",
+  },
+} as const;
